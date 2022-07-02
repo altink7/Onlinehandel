@@ -50,6 +50,13 @@ public abstract class Order{
 	public Order(Order orig){
 		this.collected= new DateTime(orig.collected);
 		this.costumer = new Costumer(orig.costumer);
+		this.delivered =new DateTime(orig.delivered);
+		this.goods =orig.goods;
+		this.id=orig.id;
+	}
+
+	public boolean addItems(){
+
 	}
 
 	/**
