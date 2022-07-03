@@ -41,9 +41,10 @@ public abstract class Order implements Comparable<Order>{
 		}
 
 		if(items !=null){
+			goods = new HashSet<>();
 			for(Item i:items){
 				if(i!=null){
-					goods = new HashSet<>();
+
 					goods.add(i);
 				}else {
 					throw new IllegalArgumentException();
@@ -81,7 +82,9 @@ public abstract class Order implements Comparable<Order>{
 	public boolean addItems(Iterable<Item> items){
 		if(!isCollected()&&!isCollected()){
 			if(items!=null) {
+				if(goods==null) {
 				goods = new HashSet<>();
+			}
 				goods.addAll((Collection<? extends Item>) items);
 				return true;
 			}
@@ -93,7 +96,9 @@ public abstract class Order implements Comparable<Order>{
 	public boolean addItems(Item item){
 		if(!isCollected()&&!isCollected()){
 			if(item!=null) {
-				goods = new HashSet<>();
+				if(goods==null) {
+					goods = new HashSet<>();
+				}
 				goods.add(item);
 				return true;
 			}
