@@ -1,5 +1,6 @@
 package Onlinehandel.entities;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ import Onlinehandel.provided.*;
  * </ul>
  *
  */
-public abstract class Order{
+public abstract class Order implements Comparable<Order>{
 
 	private DateTime collected;
 	private Costumer costumer;
@@ -67,6 +68,60 @@ public abstract class Order{
 		}
 		throw new IllegalArgumentException();
 	}
+
+	public boolean addItems(Iterable<Item> items){
+		if(!isCollected()&&!isCollected()){
+			if(items!=null) {
+				goods = new HashSet<>();
+				goods.addAll((Collection<? extends Item>) items);
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
+
+	public boolean addItems(Item item){
+		if(!isCollected()&&!isCollected()){
+			if(item!=null) {
+				goods = new HashSet<>();
+				goods.add(item);
+				return true;
+			}
+			return false;
+		}
+		return false;
+	}
+
+	public boolean collect(DateTime toc){
+		if(!isCollected()){
+			collected = new DateTime(toc);
+			return true;
+		}
+		return false;
+	}
+
+	public int compareTo(Order arg0){
+		return Long.compare(this.id,arg0.id);
+	}
+
+	public boolean deliver(DateTime tod){
+		if(!isDelivered()&&isCollected()){
+			delivered = new DateTime(tod);
+			return true;
+		}
+		return false;
+	}
+
+	public Costumer getCostumer(){
+		return new Costumer(costumer);
+	}
+
+	public Set<Item> getItems(){
+		return goods;
+	}
+
+	abstract int getTotal();
 
 
 	/**
