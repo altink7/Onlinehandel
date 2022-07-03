@@ -55,9 +55,19 @@ public abstract class Order{
 		this.id=orig.id;
 	}
 
-	public boolean addItems(    ){
-
+	public boolean isCollected(){
+		return collected!=null;
 	}
+	public boolean isDelivered(){
+		return delivered!=null;
+	}
+	private String ensureNotNullNonEmpty(String str){
+		if(str != null&&!str.isEmpty()){
+			return str;
+		}
+		throw new IllegalArgumentException();
+	}
+
 
 	/**
 	 * creates a string representation of this delivery.<br>
