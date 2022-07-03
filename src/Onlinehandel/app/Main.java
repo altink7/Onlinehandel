@@ -10,7 +10,6 @@ import java.util.List;
 
 import Onlinehandel.entities.*;
 import Onlinehandel.provided.*;
-import Onlinehandel.util.*;
 
 /**
  * Onlinehandel demo application
@@ -27,15 +26,15 @@ public class Main {
 
 		// ------- costumers
 		List<Costumer> costumers = new LinkedList<>();
-		costumers.add(new Costumer("Hans Krankl", "Hütteldorf", true));
-		costumers.add(new Costumer("Peter Schöttl", "Hütteldorf", true));
-		costumers.add(new Costumer("Franz Wohlfahrt Krankl", "Reichsbrücke", false));
+		costumers.add(new Costumer("Hans Krankl", "Hï¿½tteldorf", true));
+		costumers.add(new Costumer("Peter Schï¿½ttl", "Hï¿½tteldorf", true));
+		costumers.add(new Costumer("Franz Wohlfahrt Krankl", "Reichsbrï¿½cke", false));
 
 		// ------- deliveries
 		deliveries = new LinkedList<>();
 
 		// ---
-		Order d = new InterationalOrder(120120210L, costumers.get(0), items);
+		Order d = new InternationalOrder(120120210L, costumers.get(0), items);
 		deliveries.add(d);
 
 		// ---
@@ -58,7 +57,7 @@ public class Main {
 	 * Demo application.
 	 * 
 	 * <ul>
-	 * <li>prints the test data using {@link print}</li>
+	 * <li>prints the test data using {@link //print}</li>
 	 * <li>sorts them by order id</li>
 	 * <li>prints them again (sorted)</li>
 	 * <li>filters orders, keeping those that are currently collected but not delivered</li>

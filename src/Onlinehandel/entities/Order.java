@@ -34,17 +34,26 @@ public abstract class Order implements Comparable<Order>{
 
 
 	public Order(long id, Costumer customer, Iterable<Item> items) {
-		this.costumer = customer;
+		if(customer == null){
+			throw new IllegalArgumentException();
+		}else {
+			this.costumer = customer;
+		}
+
 		if(items !=null){
 			for(Item i:items){
 				if(i!=null){
 					goods = new HashSet<>();
 					goods.add(i);
+				}else {
+					throw new IllegalArgumentException();
 				}
 			}
 		}
 		if(id>0) {
 			this.id = id;
+		}else{
+			throw new IllegalArgumentException();
 		}
 	}
 
